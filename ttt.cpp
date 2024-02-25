@@ -14,7 +14,7 @@ int main() {
   
         if (i%2==0){
             //Player 2 play
-            std::vector<int> selec = dialogue();
+            std::vector<int> selec = dialogue(2);
             matrix = play(selec[0], selec[1], 2,  matrix);
             display_grid(matrix);
             if (win == true){
@@ -28,7 +28,7 @@ int main() {
         }
         else{
             //Player 1 play
-            std::vector<int> selec = dialogue();
+            std::vector<int> selec = dialogue(1);
             matrix = play(selec[0], selec[1],  1, matrix);
             display_grid(matrix);
             if (win == true){

@@ -21,10 +21,10 @@ std::vector<std::vector<std::string>> grid() {
     {" ","|"," ","|"," "}};
 };
 
-std::vector<int> dialogue(){
+std::vector<int> dialogue(int num){
     int row;
     int line;
-    std::cout << "\nPlayer 1 turn:\n";
+    std::cout << "\nPlayer "<< num << " turn:\n";
     std::cout << "\nSelected Line\n";
     std::cin >> line;
     std::cout << "\nSelected Row\n";
@@ -37,11 +37,25 @@ std::vector<std::vector<std::string>> play(int num1, int num2, int num3, std::ve
     num1= num1 + (num1-1)-1;
     num2= num2 + (num2-1)-1;
     if (num3 == 1){
-        grid[num1][num2] += "x";
+        while ((grid[num1][num2] == "X" ) || (grid[num1][num2] == "O" )){
+            std::cout << "Repeat";
+            std::vector<int> vector = dialogue (num3);
+            num1= vector[0] + (vector[0]-1)-1;
+            num2= vector[1] + (vector[1]-1)-1;
+        }
+        grid[num1][num2] = "X";
         return grid;
     }
     else {
-        grid[num1][num2] += "O";
+        while ((grid[num1][num2] == "X" ) || (grid[num1][num2] == "O" )){
+            while ((grid[num1][num2] == "X" ) || (grid[num1][num2] == "O" )){
+            std::cout << "Repeat";
+            std::vector<int> vector = dialogue (num3);
+            num1= vector[0] + (vector[0]-1)-1;
+            num2= vector[1] + (vector[1]-1)-1;
+        }
+        }
+        grid[num1][num2] = "O";
         return grid;
     }
 };
